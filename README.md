@@ -17,3 +17,12 @@
 
 `processedRowsPerSecond` has impact on the throughput. The higher the value of of `processedRowsPerSecond` the higher is the number of rows processed per second increasing throughput. 
 
+## Question 2. What were the 2-3 most efficient SparkSession property key/value pairs? Through testing multiple variations on values, how can you tell these were the most optimal?
+The few important SparkSession proeprty that can help to enhance the `processedRowsPerSecond` are given below:
+* `spark.default.parallelism`
+
+* `spark.streaming.kafka.maxRatePerPartition`
+
+* `spark.sql.shuffle.partitions`
+
+To chose optimal value of these we can use some back of the envelope calculation given the resources we have and the target performance we want to achieve. Sometimes empricially observing with different values of these parameters can also help to decide the right values. We can tell whether these values are optimal are not by observing `processedRowsPerSecond`. 
